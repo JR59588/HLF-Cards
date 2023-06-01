@@ -1,0 +1,49 @@
+{
+    "name": "hlf-cards-network-AAD",
+    "version": "1.0.0",
+    "client": {
+        "organization": "AAD",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "AAD": {
+            "mspid": "AADMSP",
+            "peers": [
+                "peer0.AAD.hlfcards.com"
+            ],
+            "certificateAuthorities": [
+                "ca_AAD"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.AAD.hlfcards.com": {
+            "url": "grpcs://localhost:${P0PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.AAD.hlfcards.com",
+                "hostnameOverride": "peer0.AAD.hlfcards.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca_AAD": {
+            "url": "https://localhost:${CAPORT}",
+            "caName": "ca-AAD",
+            "tlsCACerts": {
+                "pem": "${CAPEM}"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

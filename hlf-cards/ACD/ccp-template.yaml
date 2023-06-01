@@ -1,0 +1,41 @@
+name: hlf-cards-network-AP
+version: 1.0.0
+client:
+  organization: AP
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  AP:
+    mspid: APMSP
+    peers:
+    - peer0.AP.hlfcards.com
+    certificateAuthorities:
+    - ca_AP
+peers:
+  peer0.AP.hlfcards.com:
+    url: grpcs://localhost:${P0PORT}
+    tlsCACerts:
+      pem: |
+        ${PEERPEM}
+    grpcOptions:
+      ssl-target-name-override: peer0.AP.hlfcards.com
+      hostnameOverride: peer0.AP.hlfcards.com
+  # peer1.AP.hlfcards.com:
+  #   url: grpcs://localhost:${P0PORT}
+  #   tlsCACerts:
+  #     pem: |
+  #       ${PEERPEM}
+  #   grpcOptions:
+  #     ssl-target-name-override: peer1.AP.hlfcards.com
+  #     hostnameOverride: peer1.AP.hlfcards.com
+certificateAuthorities:
+  ca_AP:
+    url: https://localhost:${CAPORT}
+    caName: ca-AP
+    tlsCACerts:
+      pem: |
+        ${CAPEM}
+    httpOptions:
+      verify: false

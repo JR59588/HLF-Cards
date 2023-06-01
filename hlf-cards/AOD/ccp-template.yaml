@@ -1,0 +1,41 @@
+name: hlf-cards-network-EDI
+version: 1.0.0
+client:
+  organization: EDI
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  EDI:
+    mspid: EDIMSP
+    peers:
+    - peer0.EDI.hlfcards.com
+    certificateAuthorities:
+    - ca_EDI
+peers:
+  peer0.EDI.hlfcards.com:
+    url: grpcs://localhost:${P0PORT}
+    tlsCACerts:
+      pem: |
+        ${PEERPEM}
+    grpcOptions:
+      ssl-target-name-override: peer0.EDI.hlfcards.com
+      hostnameOverride: peer0.EDI.hlfcards.com
+  # peer1.EDI.hlfcards.com:
+  #   url: grpcs://localhost:${P0PORT}
+  #   tlsCACerts:
+  #     pem: |
+  #       ${PEERPEM}
+  #   grpcOptions:
+  #     ssl-target-name-override: peer1.EDI.hlfcards.com
+  #     hostnameOverride: peer1.EDI.hlfcards.com
+certificateAuthorities:
+  ca_EDI:
+    url: https://localhost:${CAPORT}
+    caName: ca-EDI
+    tlsCACerts:
+      pem: |
+        ${CAPEM}
+    httpOptions:
+      verify: false

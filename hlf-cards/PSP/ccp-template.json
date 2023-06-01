@@ -1,0 +1,49 @@
+{
+    "name": "hlf-cards-network-PSP",
+    "version": "1.0.0",
+    "client": {
+        "organization": "PSP",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "PSP": {
+            "mspid": "PSPMSP",
+            "peers": [
+                "peer0.PSP.hlfcards.com"
+            ],
+            "certificateAuthorities": [
+                "ca_PSP"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.PSP.hlfcards.com": {
+            "url": "grpcs://localhost:${P0PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.PSP.hlfcards.com",
+                "hostnameOverride": "peer0.PSP.hlfcards.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca_PSP": {
+            "url": "https://localhost:${CAPORT}",
+            "caName": "ca-PSP",
+            "tlsCACerts": {
+                "pem": "${CAPEM}"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
