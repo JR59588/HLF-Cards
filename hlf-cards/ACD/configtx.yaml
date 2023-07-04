@@ -13,26 +13,26 @@
 #
 ################################################################################
 Organizations:
-    - &AP
+    - &ACD
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: APMSP    # this changed from ap
+        Name: ACDMSP    # this changed from acd
 
         # ID to load the MSP definition as
-        ID: APMSP
+        ID: ACDMSP
 
-        MSPDir: ../organizations/peerOrganizations/AP.hlfcards.com/msp
+        MSPDir: ../organizations/peerOrganizations/ACD.hlfcards.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('APMSP.admin', 'APMSP.peer', 'APMSP.client')"
+                Rule: "OR('ACDMSP.admin', 'ACDMSP.peer', 'ACDMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('APMSP.admin', 'APMSP.client')"
+                Rule: "OR('ACDMSP.admin', 'ACDMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('APMSP.admin')"
+                Rule: "OR('ACDMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('APMSP.peer')"
+                Rule: "OR('ACDMSP.peer')"

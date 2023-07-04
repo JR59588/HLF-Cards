@@ -1,39 +1,39 @@
-name: hlf-cards-network-EDI
+name: hlf-cards-network-AOD
 version: 1.0.0
 client:
-  organization: EDI
+  organization: AOD
   connection:
     timeout:
       peer:
         endorser: '300'
 organizations:
-  EDI:
-    mspid: EDIMSP
+  AOD:
+    mspid: AODMSP
     peers:
-    - peer0.EDI.hlfcards.com
+    - peer0.AOD.hlfcards.com
     certificateAuthorities:
-    - ca_EDI
+    - ca_AOD
 peers:
-  peer0.EDI.hlfcards.com:
+  peer0.AOD.hlfcards.com:
     url: grpcs://localhost:${P0PORT}
     tlsCACerts:
       pem: |
         ${PEERPEM}
     grpcOptions:
-      ssl-target-name-override: peer0.EDI.hlfcards.com
-      hostnameOverride: peer0.EDI.hlfcards.com
-  # peer1.EDI.hlfcards.com:
+      ssl-target-name-override: peer0.AOD.hlfcards.com
+      hostnameOverride: peer0.AOD.hlfcards.com
+  # peer1.AOD.hlfcards.com:
   #   url: grpcs://localhost:${P0PORT}
   #   tlsCACerts:
   #     pem: |
   #       ${PEERPEM}
   #   grpcOptions:
-  #     ssl-target-name-override: peer1.EDI.hlfcards.com
-  #     hostnameOverride: peer1.EDI.hlfcards.com
+  #     ssl-target-name-override: peer1.AOD.hlfcards.com
+  #     hostnameOverride: peer1.AOD.hlfcards.com
 certificateAuthorities:
-  ca_EDI:
+  ca_AOD:
     url: https://localhost:${CAPORT}
-    caName: ca-EDI
+    caName: ca-AOD
     tlsCACerts:
       pem: |
         ${CAPEM}

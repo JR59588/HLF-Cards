@@ -30,13 +30,13 @@ createAnchorPeerUpdate() {
     HOST="peer0.PSP.hlfcards.com"
     PORT=13051
   elif [ $ORG -eq 5 ]; then
-    HOST="peer0.AP.hlfcards.com"
+    HOST="peer0.ACD.hlfcards.com"
     PORT=15051
   elif [ $ORG -eq 6 ]; then
     HOST="peer0.CAcct.hlfcards.com"
     PORT=17051
   elif [ $ORG -eq 7 ]; then
-    HOST="peer0.EDI.hlfcards.com"
+    HOST="peer0.AOD.hlfcards.com"
     PORT=19051
   else
     errorln "Org${ORG} unknown"

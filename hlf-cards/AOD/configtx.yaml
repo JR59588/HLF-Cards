@@ -13,26 +13,26 @@
 #
 ################################################################################
 Organizations:
-    - &EDI
+    - &AOD
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: EDIMSP    # this changed from ap
+        Name: AODMSP    # this changed from ap
 
         # ID to load the MSP definition as
-        ID: EDIMSP
+        ID: AODMSP
 
-        MSPDir: ../organizations/peerOrganizations/EDI.hlfcards.com/msp
+        MSPDir: ../organizations/peerOrganizations/AOD.hlfcards.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('EDIMSP.admin', 'EDIMSP.peer', 'EDIMSP.client')"
+                Rule: "OR('AODMSP.admin', 'AODMSP.peer', 'AODMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('EDIMSP.admin', 'EDIMSP.client')"
+                Rule: "OR('AODMSP.admin', 'AODMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('EDIMSP.admin')"
+                Rule: "OR('AODMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('EDIMSP.peer')"
+                Rule: "OR('AODMSP.peer')"

@@ -16,9 +16,9 @@ export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/merchantOrg1.hlfcard
 export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/merchantOrg2.hlfcards.com/peers/peer0.merchantOrg2.hlfcards.com/tls/ca.crt
 export PEER0_AAD_CA=${PWD}/organizations/peerOrganizations/AAD.hlfcards.com/peers/peer0.AAD.hlfcards.com/tls/ca.crt
 export PEER0_PSP_CA=${PWD}/organizations/peerOrganizations/PSP.hlfcards.com/peers/peer0.PSP.hlfcards.com/tls/ca.crt
-export PEER0_AP_CA=${PWD}/organizations/peerOrganizations/AP.hlfcards.com/peers/peer0.AP.hlfcards.com/tls/ca.crt
+export PEER0_ACD_CA=${PWD}/organizations/peerOrganizations/ACD.hlfcards.com/peers/peer0.ACD.hlfcards.com/tls/ca.crt
 export PEER0_CAcct_CA=${PWD}/organizations/peerOrganizations/CAcct.hlfcards.com/peers/peer0.CAcct.hlfcards.com/tls/ca.crt
-export PEER0_EDI_CA=${PWD}/organizations/peerOrganizations/EDI.hlfcards.com/peers/peer0.EDI.hlfcards.com/tls/ca.crt
+export PEER0_AOD_CA=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/peers/peer0.AOD.hlfcards.com/tls/ca.crt
 
 # Set environment variables for the peer org
 setGlobals() {
@@ -54,9 +54,9 @@ setGlobals() {
     export CORE_PEER_ADDRESS=localhost:13051
   
   elif [ $USING_ORG -eq 5 ]; then
-    export CORE_PEER_LOCALMSPID="APMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_AP_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/AP.hlfcards.com/users/Admin@AP.hlfcards.com/msp
+    export CORE_PEER_LOCALMSPID="ACDMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ACD_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/ACD.hlfcards.com/users/Admin@ACD.hlfcards.com/msp
     export CORE_PEER_ADDRESS=localhost:15051
 
   elif [ $USING_ORG -eq 6 ]; then
@@ -68,9 +68,9 @@ setGlobals() {
 
   elif [ $USING_ORG -eq 7 ]; then
     echo "setting peer env for $USING_ORG"
-    export CORE_PEER_LOCALMSPID="EDIMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_EDI_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/EDI.hlfcards.com/users/Admin@EDI.hlfcards.com/msp
+    export CORE_PEER_LOCALMSPID="AODMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_AOD_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/users/Admin@AOD.hlfcards.com/msp
     export CORE_PEER_ADDRESS=localhost:19051
   
   else
@@ -101,11 +101,11 @@ setGlobalsCLI() {
   elif [ $USING_ORG -eq 4 ]; then
     export CORE_PEER_ADDRESS=peer0.PSP.hlfcards.com:13051
   elif [ $USING_ORG -eq 5 ]; then
-    export CORE_PEER_ADDRESS=peer0.AP.hlfcards.com:15051
+    export CORE_PEER_ADDRESS=peer0.ACD.hlfcards.com:15051
   elif [ $USING_ORG -eq 6 ]; then
     export CORE_PEER_ADDRESS=peer0.CAcct.hlfcards.com:17051
   elif [ $USING_ORG -eq 7 ]; then
-    export CORE_PEER_ADDRESS=peer0.EDI.hlfcards.com:19051
+    export CORE_PEER_ADDRESS=peer0.AOD.hlfcards.com:19051
   else
     errorln "ORG Unknown"
   fi

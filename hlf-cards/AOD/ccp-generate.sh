@@ -29,15 +29,15 @@ function yaml_ccp {
 ORG=7
 P0PORT=19051
 CAPORT=19054
-PEERPEM=../organizations/peerOrganizations/EDI.hlfcards.com/tlsca/tlsca.EDI.hlfcards.com-cert.pem
-CAPEM=../organizations/peerOrganizations/EDI.hlfcards.com/ca/ca.EDI.hlfcards.com-cert.pem
+PEERPEM=../organizations/peerOrganizations/AOD.hlfcards.com/tlsca/tlsca.AOD.hlfcards.com-cert.pem
+CAPEM=../organizations/peerOrganizations/AOD.hlfcards.com/ca/ca.AOD.hlfcards.com-cert.pem
 
-#PEERPEM=../organizations/peerOrganizations/ap.hlfcards.com/tlsca/tlsca.EDI.hlfcards.com-cert.pem
-#CAPEM=../organizations/peerOrganizations/ap.hlfcards.com/ca/ca.EDI.hlfcards.com-cert.pem
+#PEERPEM=../organizations/peerOrganizations/ap.hlfcards.com/tlsca/tlsca.AOD.hlfcards.com-cert.pem
+#CAPEM=../organizations/peerOrganizations/ap.hlfcards.com/ca/ca.AOD.hlfcards.com-cert.pem
 
-echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/EDI.hlfcards.com/connection-EDI.json
-echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/EDI.hlfcards.com/connection-EDI.yaml
+echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/AOD.hlfcards.com/connection-AOD.json
+echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/AOD.hlfcards.com/connection-AOD.yaml
 
-#echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/ap.hlfcards.com/connection-EDI.json
-#echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/ap.hlfcards.com/connection-EDI.yaml
+#echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/ap.hlfcards.com/connection-AOD.json
+#echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ../organizations/peerOrganizations/ap.hlfcards.com/connection-AOD.yaml
 

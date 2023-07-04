@@ -1,0 +1,98 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+volumes:
+  peer0.ACD.hlfcards.com:
+  #peer1.ACD.hlfcards.com:
+  
+networks:
+  test:
+    name: hlf-cards-network
+
+services:
+
+  peer0.ACD.hlfcards.com:
+    container_name: peer0.ACD.hlfcards.com
+    image: hyperledger/fabric-peer:latest
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlf-cards-network
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      # - PEER_HOST=peer0.ACD.hlfcards.com
+      # - PEER_NAME=peer0.ACD.hlfcards.com
+      - CORE_PEER_ID=peer0.ACD.hlfcards.com
+      # - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      # - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_ADDRESS=peer0.ACD.hlfcards.com:15051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:15051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.ACD.hlfcards.com:15052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:15052
+      #- CORE_PEER_GOSSIP_BOOTSTRAP=peer1.ACD.hlfcards.com:16051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.ACD.hlfcards.com:15051
+      # localmspid === should not be changed.
+      - CORE_PEER_LOCALMSPID=ACDMSP
+      # CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:16051
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../../organizations/peerOrganizations/ACD.hlfcards.com/peers/peer0.ACD.hlfcards.com/msp:/etc/hyperledger/fabric/msp
+        - ../../organizations/peerOrganizations/ACD.hlfcards.com/peers/peer0.ACD.hlfcards.com/tls:/etc/hyperledger/fabric/tls
+        # - peer0.ACD.hlfcards.com:/var/hyperledger/production
+        - ../../backup/peer0.ACD.hlfcards.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 15051:15051
+     # - 16051:16051
+    networks:
+      - test
+
+  # peer1.ACD.hlfcards.com:
+  #   container_name: peer1.ACD.hlfcards.com
+  #   image: hyperledger/fabric-peer:latest
+  #   dns_search: .
+  #   environment:
+  #     #Generic peer variables
+  #     - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+  #     - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlf-cards-network
+  #     - FABRIC_LOGGING_SPEC=INFO
+  #     # - FABRIC_LOGGING_SPEC=DEBUG
+  #     - CORE_PEER_TLS_ENABLED=true
+  #     - CORE_PEER_PROFILE_ENABLED=true
+  #     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+  #     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+  #     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+  #     # Peer specific variabes
+  #     - CORE_PEER_ID=peer1.ACD.hlfcards.com
+  #     - CORE_PEER_ADDRESS=peer1.ACD.hlfcards.com:16051
+  #     - CORE_PEER_LISTENADDRESS=0.0.0.0:16051
+  #     - CORE_PEER_CHAINCODEADDRESS=peer1.ACD.hlfcards.com:16052
+  #     - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:16052
+  #     - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.ACD.hlfcards.com:15051
+  #     - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.ACD.hlfcards.com:16051
+  #     # localmspid === should not be changed.
+  #     - CORE_PEER_LOCALMSPID=ACDMSP
+  #     # CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:16051
+  #   volumes:
+  #       - /var/run/docker.sock:/host/var/run/docker.sock
+  #       - ../../organizations/peerOrganizations/ACD.hlfcards.com/peers/peer1.ACD.hlfcards.com/msp:/etc/hyperledger/fabric/msp
+  #       - ../../organizations/peerOrganizations/ACD.hlfcards.com/peers/peer1.ACD.hlfcards.com/tls:/etc/hyperledger/fabric/tls
+  #      # - peer1.ACD.hlfcards.com:/var/hyperledger/production
+  #       - ../backup/peer1.ACD.hlfcards.com:/var/hyperledger/production
+  #   working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+  #   command: peer node start
+  #   ports:
+  #    # - 15051:15051
+  #     - 16051:16051
+  #   networks:
+  #     - test

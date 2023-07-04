@@ -1,0 +1,8 @@
+organizations/peerOrganizations/
+organizations/ordererOrganizations/
+organizations/fabric-ca/ordererOrg/msp/keystore/1a284d4d2fb780fdd03ab77d708909601667e5bfcee928e70dffb2c86e502316_sk
+organizations/fabric-ca/ordererOrg/
+organizations/fabric-ca/org2/
+organizations/fabric-ca/org1/
+config/
+hlf-dec-dependencies/
