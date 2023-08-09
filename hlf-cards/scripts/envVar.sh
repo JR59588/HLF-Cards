@@ -19,6 +19,8 @@ export PEER0_PSP_CA=${PWD}/organizations/peerOrganizations/PSP.hlfcards.com/peer
 export PEER0_ACD_CA=${PWD}/organizations/peerOrganizations/ACD.hlfcards.com/peers/peer0.ACD.hlfcards.com/tls/ca.crt
 export PEER0_CAcct_CA=${PWD}/organizations/peerOrganizations/CAcct.hlfcards.com/peers/peer0.CAcct.hlfcards.com/tls/ca.crt
 export PEER0_AOD_CA=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/peers/peer0.AOD.hlfcards.com/tls/ca.crt
+#$$ <new org exports come here>
+  # do not remove the above line !caution.
 
 # Set environment variables for the peer org
 setGlobals() {
@@ -73,6 +75,9 @@ setGlobals() {
     export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/users/Admin@AOD.hlfcards.com/msp
     export CORE_PEER_ADDRESS=localhost:19051
   
+  # <new org insertions come here>
+  # do not remove the above line !caution.
+
   else
     errorln "ORG Unknown"
   fi
