@@ -49,7 +49,7 @@ setAnchorPeer() {
   scripts/setAnchorPeer.sh $ORG $CHANNEL_NAME
 }
 
-setGlobalsCLI 7
+setGlobalsCLI 6
 BLOCKFILE="${CHANNEL_NAME}.block"
 
 echo "Fetching channel config block from orderer..."
@@ -61,10 +61,10 @@ cat log.txt
 verifyResult $res "Fetching config block from orderer has failed"
 
 infoln "Joining AOD peer to the channel..."
-joinChannel 7
+joinChannel 6
 
 infoln "Setting anchor peer for AOD..."
-setAnchorPeer 7
+setAnchorPeer 6
 
 successln "Channel '$CHANNEL_NAME' joined"
 successln "AOD peer successfully added to network"

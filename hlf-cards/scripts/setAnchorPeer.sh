@@ -33,11 +33,9 @@ createAnchorPeerUpdate() {
     HOST="peer0.ACD.hlfcards.com"
     PORT=15051
   elif [ $ORG -eq 6 ]; then
-    HOST="peer0.CAcct.hlfcards.com"
-    PORT=17051
-  elif [ $ORG -eq 7 ]; then
     HOST="peer0.AOD.hlfcards.com"
     PORT=19051
+###token4
   else
     errorln "Org${ORG} unknown"
   fi

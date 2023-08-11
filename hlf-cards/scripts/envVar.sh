@@ -17,8 +17,9 @@ export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/merchantOrg2.hlfcard
 export PEER0_AAD_CA=${PWD}/organizations/peerOrganizations/AAD.hlfcards.com/peers/peer0.AAD.hlfcards.com/tls/ca.crt
 export PEER0_PSP_CA=${PWD}/organizations/peerOrganizations/PSP.hlfcards.com/peers/peer0.PSP.hlfcards.com/tls/ca.crt
 export PEER0_ACD_CA=${PWD}/organizations/peerOrganizations/ACD.hlfcards.com/peers/peer0.ACD.hlfcards.com/tls/ca.crt
-export PEER0_CAcct_CA=${PWD}/organizations/peerOrganizations/CAcct.hlfcards.com/peers/peer0.CAcct.hlfcards.com/tls/ca.crt
 export PEER0_AOD_CA=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/peers/peer0.AOD.hlfcards.com/tls/ca.crt
+
+###token1
 #$$ <new org exports come here>
   # do not remove the above line !caution.
 
@@ -63,18 +64,12 @@ setGlobals() {
 
   elif [ $USING_ORG -eq 6 ]; then
     echo "setting peer env for $USING_ORG"
-    export CORE_PEER_LOCALMSPID="CAcctMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_CAcct_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/CAcct.hlfcards.com/users/Admin@CAcct.hlfcards.com/msp
-    export CORE_PEER_ADDRESS=localhost:17051
-
-  elif [ $USING_ORG -eq 7 ]; then
-    echo "setting peer env for $USING_ORG"
     export CORE_PEER_LOCALMSPID="AODMSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_AOD_CA
     export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/AOD.hlfcards.com/users/Admin@AOD.hlfcards.com/msp
     export CORE_PEER_ADDRESS=localhost:19051
-  
+
+###token2
   # <new org insertions come here>
   # do not remove the above line !caution.
 
@@ -108,9 +103,8 @@ setGlobalsCLI() {
   elif [ $USING_ORG -eq 5 ]; then
     export CORE_PEER_ADDRESS=peer0.ACD.hlfcards.com:15051
   elif [ $USING_ORG -eq 6 ]; then
-    export CORE_PEER_ADDRESS=peer0.CAcct.hlfcards.com:17051
-  elif [ $USING_ORG -eq 7 ]; then
     export CORE_PEER_ADDRESS=peer0.AOD.hlfcards.com:19051
+###token3
   else
     errorln "ORG Unknown"
   fi
