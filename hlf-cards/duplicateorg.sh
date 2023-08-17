@@ -16,7 +16,7 @@ find . -type f -exec sed -i "s|$3|$7|g" {} +
 echo $2
 find . -type f -exec sed -i "s|$4|$8|g" {} +
 find . -type f -exec sed -i "s|$5|$9|g" {} +
-find . -type f -exec sed -i "s|$6|$10|g" {} +
+find . -type f -exec sed -i "s|$6|${10}|g" {} +
 echo "the above changed code is working,,,......."
 # Function to rename files recursively
 rename_files() {
@@ -52,7 +52,7 @@ cp -r $1-scripts $2-scripts
 cd $2-scripts
 
 find . -type f -exec sed -i "s|$1|$2|g" {} +
-#sed -i "s|$12|$11|g" joinChannel.sh 
+#sed -i "s|${12}|${11}|g" joinChannel.sh 
 echo "the above changed code is working,,,.......56 line"
 echo $PWD
 echo "s|setGlobalsCLI ${12}|setGlobalsCLI ${11}|g"
@@ -89,7 +89,7 @@ echo $PWD
 add_text_before "###token1" "export PEER0_$2_CA=\${PWD}/organizations/peerOrganizations/$2.hlfdec.com/peers/peer0.$2.hlfdec.com/tls/ca.crt" envVar.sh
 echo >> envVar.sh
 
-add_text_before "###token2" "  elif [ \$USING_ORG -eq $11 ]; then" envVar.sh
+add_text_before "###token2" "  elif [ \$USING_ORG -eq ${11} ]; then" envVar.sh
 add_text_before "###token2" "    echo \"setting peer env for \$USING_ORG\"" envVar.sh
 add_text_before "###token2" "    export CORE_PEER_LOCALMSPID=\"$2MSP\"" envVar.sh
 add_text_before "###token2" "    export CORE_PEER_TLS_ROOTCERT_FILE=\$PEER0_$2_CA" envVar.sh
@@ -97,11 +97,11 @@ add_text_before "###token2" "    export CORE_PEER_MSPCONFIGPATH=\${PWD}/organiza
 add_text_before "###token2" "    export CORE_PEER_ADDRESS=localhost:$7" envVar.sh
 echo >> envVar.sh
 
-add_text_before "###token3" "  elif [ \$USING_ORG -eq $11 ]; then" envVar.sh
+add_text_before "###token3" "  elif [ \$USING_ORG -eq ${11} ]; then" envVar.sh
 add_text_before "###token3" "    export CORE_PEER_ADDRESS=peer0.$2.hlfdec.com:$7" envVar.sh
 echo >> envVar.sh
 
-add_text_before "###token4" "  elif [ \$ORG -eq $11 ]; then" setAnchorPeer.sh
+add_text_before "###token4" "  elif [ \$ORG -eq ${11} ]; then" setAnchorPeer.sh
 add_text_before "###token4" "    HOST=\"peer0.$2.hlfdec.com\"" setAnchorPeer.sh
 add_text_before "###token4" "    PORT=$7" setAnchorPeer.sh
 echo >> setAnchorPeer.sh
