@@ -54,6 +54,13 @@ cd $2-scripts
 find . -type f -exec sed -i "s|$1|$2|g" {} +
 #sed -i "s|$12|$11|g" joinChannel.sh 
 echo "the above changed code is working,,,.......56 line"
+echo $PWD
+echo "s|setGlobalsCLI ${12}|setGlobalsCLI ${11}|g"
+sed -i "s|setGlobalsCLI ${12}|setGlobalsCLI ${11}|g" joinChannel.sh 
+sed -i "s|joinChannel ${12}|joinChannel ${11}|g" joinChannel.sh 
+sed -i "s|setAnchorPeer ${12}|setAnchorPeer ${11}|g" joinChannel.sh 
+echo "line number 59"
+echo "the above changed code is working,,,.......63 line"
 
 echo $PWD
 add_text_before() {
