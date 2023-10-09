@@ -150,7 +150,7 @@ peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride o
 
 peer lifecycle chaincode package onboardingMerchantC.tar.gz --path ../../../CardsChaincodeV1/hlf-chaincode/PDC/pdc-Chaincode-AOD/ --lang node --label onboardingMerchantC
 
-peer lifecycle chaincode install onboardingMerchantC.tar.gz
+peer lifecycle chaincode install onboardingMerchantC.tar.gz >&log1.txt
 
 export CC_PACKAGE_ID=$(sed -n 's/.*Chaincode code package identifier: \([^ ]*\).*/\1/p' log1.txt)
 
@@ -207,7 +207,7 @@ peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride o
 
 peer lifecycle chaincode package onboardingMerchantC.tar.gz --path ../../../CardsChaincodeV1/hlf-chaincode/PDC/pdc-Chaincode-AAD/ --lang node --label onboardingMerchantC
 
-peer lifecycle chaincode install onboardingMerchantC.tar.gz
+peer lifecycle chaincode install onboardingMerchantC.tar.gz >&log1.txt
 
 cat log1.txt
 export CC_PACKAGE_ID=$(sed -n 's/.*Chaincode code package identifier: \([^ ]*\).*/\1/p' log1.txt)
